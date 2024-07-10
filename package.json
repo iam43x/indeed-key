@@ -5,6 +5,10 @@
   "description": "copy to clipboard OTP",
   "icon": "otp-icon.png",
   "author": "iam43x",
+  "owner": "alfa-mobile",
+  "categories": [
+    "Developer Tools"
+  ],
   "license": "MIT",
   "commands": [
     {
