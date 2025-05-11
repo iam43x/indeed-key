@@ -6,7 +6,9 @@ import { decodeDeriveKey, calculateHOTP, decodeSecretKey } from "./crypto";
 function initCache() {
   const masterKey = Cache.getMasterKey();
   if (!masterKey) Cache.setMasterKey(decodeDeriveKey(properties.deviceID));
-  const query = new URL(properties.qrCodeDeeplink);
+  const splitedQrCodeDeeplink = decodeURIComponent(properties.qrCodeDeeplink).split('?');
+  const formatedQrCodeDeeplink = [splitedQrCodeDeeplink[0], splitedQrCodeDeeplink[splitedQrCodeDeeplink.length - 1]].join('?');
+  const query = new URL(formatedQrCodeDeeplink);
   const passphrase = Cache.getPassphrase();
   if (!passphrase) Cache.setPassphrase(query.searchParams.get("secret")!);
   const iv = Cache.getInitVector();
